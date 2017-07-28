@@ -11,8 +11,15 @@ var ClozeCard = function(err, text, cloze) {
   this.fullText = fullText;
 };
 
+inquirer,prompt([{
 
-var firstPresident = new BasicCard ("Who was the first President of the United States", "George Washington");
+
+}])
+
+
+var firstPresident = new ClozeCard ("George Washington",
+									"____________  ______________ was the first President of the United States",
+									"George Washington was the first President of the United States");
 
 
 
