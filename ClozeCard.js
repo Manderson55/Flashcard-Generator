@@ -32,12 +32,28 @@ function clozeCardCreator() {
 		  {
 		    type: 'input',
 		    name: 'fullText',
-		    message: 'Enter the Question/Statement'
+		    message: 'Enter the Question/Statement',
+		    validate: function(input) {
+               if (input === '') {
+                   console.log('Please provide the Question/Statement');
+                   return false;
+               } else {
+                   return true;
+                 }
+            }
 		  },
 		  {
 		    type: 'input',
 		    name: 'cloze',
-		    message: 'Enter the Text you want the User to guess (has to be part of the full text)'
+		    message: 'Enter the cloze Text (has to be part of Question/Statement)',
+		    validate: function(input) {
+               if (input === '') {
+                   console.log('Please provide the cloze');
+                   return false;
+               } else {
+                   return true;
+                 }
+            }
 		  },
 	    ]).then(function(answers) {
 
