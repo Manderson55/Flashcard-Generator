@@ -7,9 +7,14 @@ var inquirer = require("inquirer");
 
 function basicCardCreator() {
 
-	var BasicCard = function(front, back) {
-	  this.front = front;
-	  this.back = back;
+	var BasicCard = function(front, back) {	
+
+      if ( this instanceof BasicCard) {
+      	this.front = front;
+	    this.back = back;
+      } else {
+      	return new BasicCard(front, back)
+      }
 	};
 
 	BasicCard.prototype.printInfo = function() {

@@ -8,9 +8,14 @@ var inquirer = require("inquirer");
 function clozeCardCreator() {
 
 	var ClozeCard = function(fullText, cloze) {
-	  this.fullText = fullText;
-	  this.cloze = cloze;  	
-	  this.partial = this.fullText.replace(this.cloze, "______");
+	   if ( this instanceof ClozeCard) {
+		  this.fullText = fullText;
+		  this.cloze = cloze;  	
+		  this.partial = this.fullText.replace(this.cloze, "______");
+		} else {
+		  return new ClozeCard(fullText, cloze);
+		}
+
 	};
 
 	ClozeCard.prototype.printInfo = function() {
