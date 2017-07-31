@@ -57,21 +57,25 @@ function clozeCardCreator() {
 		  },
 	    ]).then(function(answers) {
 
-	      // var partialText = answers.fullText.replace(answers.cloze, "_________"); 
-	      // console.log(partialText);
-	      var newClozeCard = new ClozeCard(
-	        answers.fullText,
-	        answers.cloze,
-	        answers.fullText);
-	      // pushes the new Cloze card object into the Cloze cards array
-	      clozeCardArray.push(newClozeCard);
-	      // add one to count to increment our recursive loop by one
-	      count++;
-	      // run the create Cloze card function again to create more Cloze cards
-	   	  createClozeCard();	
+            if (answers.fullText.includes(answers.cloze)) {
+	      		var newClozeCard = new ClozeCard(
+	        		answers.fullText,
+	        		answers.cloze,
+	        		answers.fullText);
+	      			// pushes the new Cloze card object into the Cloze cards array
+	      			clozeCardArray.push(newClozeCard);
+	      			// add one to count to increment our recursive loop by one
+	      			count++;
+	      			createClozeCard();
+            } else {
+                console.log('The cloze portion you provided is not found in the full text. Please try again.');
+                createClozeCard();
+            }
+	
 	    });
-	    // else statement which runs a for loop that will execute .printInfo() for each object inside of our array
+
 	  }
+	  // else statement which runs a for loop that will execute .printInfo() for each object inside of our array
 	  else {
 	    for (var x = 0; x < clozeCardArray.length; x++) {
 	      clozeCardArray[x].printInfo();
